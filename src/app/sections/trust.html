@@ -1,0 +1,24 @@
+<section class="section trust" id="confianza">
+  <div class="section__inner">
+    <div class="trust__intro" appReveal>
+      <span class="section__eyebrow">Por qué J&amp;L</span>
+      <h2 class="section__title">Una ruta simple: origen, camino, destino</h2>
+      <p class="section__lead">
+        Menos fricción, más movimiento. Así trabajamos cada envío.
+      </p>
+    </div>
+
+    <ol class="trust__timeline" appReveal [appRevealDelay]="120">
+      @for (step of steps; track step.label; let i = $index; let last = $last) {
+        <li class="trust__step" [style.--i]="i">
+          <span class="trust__dot" aria-hidden="true"></span>
+          @if (!last) {
+            <span class="trust__line" aria-hidden="true"></span>
+          }
+          <h3>{{ step.label }}</h3>
+          <p>{{ step.detail }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

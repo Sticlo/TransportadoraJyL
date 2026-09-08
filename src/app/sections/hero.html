@@ -1,0 +1,38 @@
+<section class="hero" id="inicio">
+  <div class="hero__atmosphere" aria-hidden="true">
+    <div class="hero__mist"></div>
+    <div class="hero__ridge"></div>
+    <div class="hero__glow"></div>
+  </div>
+
+  <div class="hero__layout">
+    <div class="hero__copy">
+      <p class="hero__brand">{{ company }}</p>
+      <h1 class="hero__title">Mercancía que llega a tiempo, a todo Colombia</h1>
+      <p class="hero__lead">
+        Transporte de carga entre ciudades, con seguimiento y trato directo por WhatsApp.
+      </p>
+      <div class="hero__actions">
+        <a
+          class="btn-whatsapp hero__cta"
+          [href]="whatsapp"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M20.5 3.5A11 11 0 0 0 2.1 17.2L1 23l5.9-1.1A11 11 0 0 0 20.5 3.5Zm-8.5 17a9 9 0 0 1-4.6-1.3l-.3-.2-3.5.7.7-3.4-.2-.3A9 9 0 1 1 12 20.5Zm5.2-6.7c-.3-.1-1.7-.8-1.9-.9s-.5-.1-.7.2-.8.9-1 1.1-.4.2-.7.1a7.4 7.4 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.5.1-.6l.5-.6c.1-.2.1-.3 0-.5l-.9-2.1c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.4 1.1 2.8 1.2 3 .2.3 2.1 3.3a13.4 13.4 0 0 0 3.4 2.6c1.3.5 1.9.5 2.6.4s1.7-.7 2-1.4.3-1.2.2-1.4-.3-.2-.6-.3Z"
+            />
+          </svg>
+          Cotizar por WhatsApp
+        </a>
+        <a class="hero__link" href="#cobertura">Ver cobertura</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__stage" aria-hidden="true">
+    <app-truck-road />
+  </div>
+</section>

@@ -1,0 +1,36 @@
+<header class="header" [class.header--open]="menuOpen()">
+  <div class="header__shell">
+    <a class="header__brand" href="#inicio" (click)="closeMenu()" [attr.aria-label]="company">
+      <span class="header__mark" aria-hidden="true"></span>
+      <span class="header__name">J&amp;L</span>
+    </a>
+
+    <button
+      class="header__burger"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="site-nav"
+      aria-label="Abrir menú"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="header__nav" id="site-nav" [attr.aria-hidden]="!menuOpen()">
+      <a href="#cobertura" (click)="closeMenu()">Cobertura</a>
+      <a href="#servicio" (click)="closeMenu()">Servicio</a>
+      <a href="#contacto" (click)="closeMenu()">Contacto</a>
+    </nav>
+
+    <a
+      class="header__cta"
+      [href]="whatsapp"
+      target="_blank"
+      rel="noopener noreferrer"
+      (click)="closeMenu()"
+    >
+      WhatsApp
+    </a>
+  </div>
+</header>

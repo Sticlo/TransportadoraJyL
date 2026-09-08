@@ -1,0 +1,180 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.highway {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(180deg, #5a4c4f 0%, #3a3234 35%, #241e20 100%);
+}
+
+.highway__guard {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 0.4rem;
+  background: repeating-linear-gradient(
+    90deg,
+    #c8102e 0 18px,
+    #ffffff 18px 36px
+  );
+  z-index: 3;
+  opacity: 0.9;
+}
+
+.highway__asphalt {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 18%;
+  bottom: 8%;
+  background: linear-gradient(180deg, #4a4245 0%, #2f292b 45%, #1f1a1c 100%);
+  box-shadow: inset 0 10px 18px rgb(0 0 0 / 25%);
+  z-index: 1;
+}
+
+.highway__lane {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 48%;
+  height: 6px;
+  margin-top: -3px;
+  background: repeating-linear-gradient(
+    90deg,
+    #fff 0 52px,
+    transparent 52px 110px
+  );
+  animation: lane-scroll 0.7s linear infinite;
+  opacity: 0.92;
+}
+
+.highway__edge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #f0ecec;
+  opacity: 0.7;
+}
+
+.highway__edge--top {
+  top: 10%;
+}
+
+.highway__edge--bottom {
+  bottom: 12%;
+}
+
+.highway__rig {
+  position: absolute;
+  left: 0;
+  bottom: 10%;
+  z-index: 4;
+  width: min(78vw, 38rem);
+  animation: mule-drive 12s linear infinite;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.highway__shadow {
+  position: absolute;
+  left: 6%;
+  right: 8%;
+  bottom: -0.2rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 45%);
+  filter: blur(8px);
+}
+
+.highway__beam {
+  position: absolute;
+  right: -8%;
+  bottom: 42%;
+  width: 26%;
+  height: 1.6rem;
+  background: linear-gradient(90deg, rgb(255 230 160 / 0%), rgb(255 230 160 / 45%), rgb(255 245 210 / 10%));
+  filter: blur(7px);
+  transform: skewX(-12deg);
+  opacity: 0.75;
+  animation: beam-pulse 2.2s ease-in-out infinite;
+}
+
+.mule {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(34vh, 11.5rem);
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 12px 18px rgb(0 0 0 / 40%));
+  animation: mule-bob 1.05s ease-in-out infinite;
+  transform-origin: center bottom;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@keyframes lane-scroll {
+  to {
+    background-position: -110px 0;
+  }
+}
+
+@keyframes mule-drive {
+  0% {
+    transform: translateX(-55%);
+  }
+  100% {
+    transform: translateX(115vw);
+  }
+}
+
+@keyframes mule-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+}
+
+@keyframes beam-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@media (max-width: 700px) {
+  .highway__rig {
+    width: 92vw;
+  }
+
+  .mule {
+    max-height: 26vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .highway__lane,
+  .highway__rig,
+  .highway__beam,
+  .mule {
+    animation: none;
+  }
+
+  .highway__rig {
+    left: 12%;
+    transform: none;
+  }
+}
