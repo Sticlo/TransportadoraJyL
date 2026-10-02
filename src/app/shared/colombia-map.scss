@@ -1,0 +1,243 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.co-map {
+  position: relative;
+  width: var(--co-map-width, min(100%, 19rem));
+  margin-inline: auto;
+}
+
+.co-map--cities .co-map__land path {
+  fill: #ece7e4;
+  stroke: #fff;
+  transition: fill 0.4s ease;
+}
+
+.co-map--cities .co-map__land path.is-served {
+  fill: color-mix(in srgb, var(--brand) 16%, #f6e9eb);
+}
+
+.co-map__spokes path {
+  transition:
+    opacity 0.3s ease,
+    stroke-width 0.3s ease;
+}
+
+.co-map__spokes--focus path {
+  opacity: 0.18;
+}
+
+.co-map__spokes--focus path.is-active {
+  opacity: 1;
+  stroke-width: 5;
+}
+
+.co-map__city--port .co-map__dot {
+  fill: #fff;
+  stroke: var(--brand);
+  stroke-width: 4;
+}
+
+.co-map__city .co-map__dot {
+  transform-origin: center;
+  transform-box: fill-box;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.co-map__city.is-active .co-map__dot {
+  transform: scale(1.6);
+}
+
+.co-map__city.is-active text {
+  fill: var(--brand);
+}
+
+.co-map__spokes path {
+  fill: none;
+  stroke: var(--brand);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0.75;
+  animation: draw-co-route 1.1s var(--ease-out) forwards;
+  animation-delay: calc(0.5s + var(--i, 0) * 0.14s);
+}
+
+.co-map__city {
+  opacity: 0;
+  animation: city-in 0.5s var(--ease-out) forwards;
+  animation-delay: calc(0.25s + var(--i, 0) * 0.14s);
+}
+
+.co-map__dot {
+  fill: var(--brand);
+  stroke: #fff;
+  stroke-width: 3.5;
+}
+
+.co-map__halo {
+  fill: color-mix(in srgb, var(--brand) 22%, transparent);
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: hub-pulse 2.4s ease-out 1s infinite;
+}
+
+.co-map__city text {
+  font-family: var(--font-body);
+  font-size: var(--co-map-label, 21px);
+  font-weight: 700;
+  fill: var(--ink);
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-width: 6px;
+  stroke-linejoin: round;
+}
+
+.co-map__city--hub text {
+  font-size: var(--co-map-hub-label, 25px);
+  fill: var(--brand);
+}
+
+@keyframes city-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hub-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.co-map__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.co-map__land path {
+  fill: #ece8e6;
+  stroke: #f6f3f2;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+
+.co-map__route-glow,
+.co-map__route {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.co-map__route {
+  stroke: var(--brand);
+  stroke-width: 4.5;
+  stroke-dasharray: 520;
+  stroke-dashoffset: 520;
+  animation: draw-co-route 1.8s var(--ease-out) 0.2s forwards;
+}
+
+.co-map__route-glow {
+  stroke: color-mix(in srgb, var(--brand) 35%, transparent);
+  stroke-width: 12;
+  opacity: 0;
+  animation: fade-co-glow 0.8s var(--ease-out) 0.9s forwards;
+}
+
+.co-map__pins circle {
+  fill: var(--brand);
+  stroke: #fff;
+  stroke-width: 3;
+  opacity: 0;
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: pin-pop 0.55s var(--ease-out) forwards;
+}
+
+.co-map__pins circle:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.co-map__pins circle:nth-child(2) {
+  animation-delay: 1s;
+}
+.co-map__pins circle:nth-child(3) {
+  animation-delay: 1.45s;
+}
+
+.co-map__brand {
+  position: absolute;
+  left: 46%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5.5vw, 3.4rem);
+  letter-spacing: 0.04em;
+  color: #2a2422;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.co-map__brand span {
+  color: var(--brand);
+}
+
+@keyframes draw-co-route {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fade-co-glow {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pin-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .co-map__route,
+  .co-map__route-glow,
+  .co-map__pins circle,
+  .co-map__spokes path,
+  .co-map__city,
+  .co-map__halo {
+    animation: none;
+  }
+
+  .co-map__route,
+  .co-map__spokes path {
+    stroke-dashoffset: 0;
+  }
+
+  .co-map__route-glow,
+  .co-map__pins circle,
+  .co-map__city {
+    opacity: 1;
+  }
+}

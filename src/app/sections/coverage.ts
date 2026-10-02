@@ -1,63 +1,29 @@
-import { afterNextRender, Component, ElementRef, inject, OnDestroy, PLATFORM_ID, signal, viewChild } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, signal } from '@angular/core';
 import { RevealDirective } from '../shared/reveal.directive';
+import { ColombiaMap, MapCity } from '../shared/colombia-map';
+import { whatsappUrl } from '../core/contact';
+import { COVERAGE_HUB, COVERAGE_REGIONS } from '../core/coverage';
 
 @Component({
   selector: 'app-coverage',
-  imports: [RevealDirective],
+  imports: [RevealDirective, ColombiaMap],
   templateUrl: './coverage.html',
   styleUrl: './coverage.scss',
 })
-export class Coverage implements OnDestroy {
-  readonly cities = [
-    'Bogotá',
-    'Medellín',
-    'Cali',
-    'Barranquilla',
-    'Bucaramanga',
-    'Pereira',
-    'Cartagena',
-    'Cúcuta',
+export class Coverage {
+  readonly regions = COVERAGE_REGIONS;
+  readonly mapCities: readonly MapCity[] = [
+    COVERAGE_HUB,
+    ...COVERAGE_REGIONS.flatMap((region) => region.cities),
   ];
 
-  protected readonly active = signal(false);
-  private readonly mapRoot = viewChild<ElementRef<HTMLElement>>('mapRoot');
-  private readonly platformId = inject(PLATFORM_ID);
-  private observer?: IntersectionObserver;
+  readonly stats = [
+    { value: '46', label: 'Vehículos propios' },
+    { value: '12', label: 'Ciudades conectadas' },
+    { value: '4', label: 'Puertos marítimos' },
+  ];
 
-  constructor() {
-    afterNextRender(() => {
-      if (!isPlatformBrowser(this.platformId)) {
-        return;
-      }
+  readonly whatsapp = whatsappUrl('Hola, quiero cotizar una ruta con Transportes J&L SAS');
 
-      const node = this.mapRoot()?.nativeElement;
-      if (!node) {
-        return;
-      }
-
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        this.active.set(true);
-        return;
-      }
-
-      this.observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting) {
-              this.active.set(true);
-              this.observer?.disconnect();
-            }
-          }
-        },
-        { threshold: 0.25 },
-      );
-
-      this.observer.observe(node);
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.observer?.disconnect();
-  }
+  protected readonly active = signal<string | null>(null);
 }

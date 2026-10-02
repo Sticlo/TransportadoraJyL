@@ -1,0 +1,155 @@
+:host {
+  display: block;
+}
+
+.home-cta {
+  position: relative;
+  padding: clamp(3.5rem, 8vw, 5.5rem) 1.25rem;
+  background: #fff;
+  border-top: 1px solid var(--line);
+}
+
+.home-cta__layout {
+  max-width: var(--max);
+  margin-inline: auto;
+  display: grid;
+  gap: 2.25rem;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .home-cta__layout {
+    grid-template-columns: 1fr 1.05fr;
+    gap: 3rem;
+  }
+}
+
+.home-cta__copy {
+  text-align: center;
+}
+
+@media (min-width: 960px) {
+  .home-cta__copy {
+    text-align: left;
+  }
+}
+
+.home-cta__title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  color: var(--ink);
+  max-width: 14ch;
+  margin-inline: auto;
+}
+
+@media (min-width: 960px) {
+  .home-cta__title {
+    margin-inline: 0;
+  }
+}
+
+.home-cta__title-line {
+  display: block;
+}
+
+.home-cta__lead {
+  margin-top: 1rem;
+  color: var(--ink-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 34rem;
+  margin-inline: auto;
+}
+
+@media (min-width: 960px) {
+  .home-cta__lead {
+    margin-inline: 0;
+  }
+}
+
+.home-cta__actions {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem 1.15rem;
+}
+
+@media (min-width: 960px) {
+  .home-cta__actions {
+    justify-content: flex-start;
+  }
+}
+
+.home-cta__link {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+  border-bottom: 1px solid rgb(20 17 15 / 18%);
+  padding-bottom: 0.1rem;
+}
+
+.home-cta__link:hover {
+  color: var(--brand);
+  border-color: var(--brand);
+}
+
+.home-cta__map-card {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.home-cta__map {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 40px rgb(20 17 15 / 6%);
+  background: #f7f6f4;
+  aspect-ratio: 16 / 11;
+  min-height: 16rem;
+}
+
+.home-cta__map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.home-cta__place {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.home-cta__place p {
+  margin: 0;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.home-cta__place strong {
+  font-size: 0.98rem;
+  color: var(--ink);
+}
+
+.home-cta__place span {
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+.home-cta__place a {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--brand);
+  border-bottom: 1.5px solid color-mix(in srgb, var(--brand) 30%, transparent);
+  padding-bottom: 0.1rem;
+}
+
+.home-cta__place a:hover {
+  border-bottom-color: var(--brand);
+}

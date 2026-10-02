@@ -10,14 +10,18 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
+export type RevealVariant = '' | 'zoom';
+
 @Directive({
   selector: '[appReveal]',
   host: {
     class: 'reveal',
     '[class.reveal--visible]': 'visible()',
+    '[class.reveal--zoom]': "variant() === 'zoom'",
   },
 })
 export class RevealDirective implements OnDestroy {
+  readonly variant = input<RevealVariant>('', { alias: 'appReveal' });
   readonly delay = input(0, { alias: 'appRevealDelay' });
 
   protected readonly visible = signal(false);
@@ -40,16 +44,16 @@ export class RevealDirective implements OnDestroy {
         return;
       }
 
+      // The root is stretched far above the viewport so anything scrolled past
+      // the top still counts as visible; elements only hide again once they
+      // drop below the bottom edge, even after a fast fling.
       this.observer = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
-            if (entry.isIntersecting) {
-              this.visible.set(true);
-              this.observer?.disconnect();
-            }
+            this.visible.set(entry.isIntersecting);
           }
         },
-        { threshold: 0.18, rootMargin: '0px 0px -8% 0px' },
+        { threshold: 0.12, rootMargin: '100000px 0px -6% 0px' },
       );
 
       this.observer.observe(node);

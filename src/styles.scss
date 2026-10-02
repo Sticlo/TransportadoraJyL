@@ -1,17 +1,35 @@
+@use 'cursors' as *;
+
+@font-face {
+  font-family: 'JL Amp';
+  src: url('/fonts/jl-amp.woff2') format('woff2');
+  unicode-range: U+0026;
+  font-display: swap;
+}
+
 :root {
-  --brand-red: #c8102e;
-  --brand-red-deep: #9a0c23;
-  --brand-red-soft: #f8e8eb;
-  --brand-white: #ffffff;
-  --ink: #1a1214;
-  --ink-muted: #5c4a4e;
-  --road: #2a2224;
-  --asphalt: #3d3336;
-  --font-display: 'Bebas Neue', Impact, sans-serif;
-  --font-body: 'Outfit', 'DM Sans', sans-serif;
+  --bg: #ffffff;
+  --bg-elevated: #f7f6f4;
+  --bg-card: #ffffff;
+  --brand: #c8102e;
+  --brand-deep: #9a0c23;
+  --brand-soft: #f8e8eb;
+  --accent: #c8102e;
+  --accent-deep: #9a0c23;
+  --wa: #25d366;
+  --ink: #14110f;
+  --ink-muted: #6a605c;
+  --line: rgb(20 17 15 / 10%);
+  --font-display: 'JL Amp', 'Bebas Neue', Impact, sans-serif;
+  --font-body: 'JL Amp', 'Outfit', 'DM Sans', sans-serif;
   --header-h: 4.75rem;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --max: 72rem;
+
+  --brand-red: var(--brand);
+  --brand-red-deep: var(--brand-deep);
+  --brand-red-soft: var(--brand-soft);
+  --brand-white: #ffffff;
 }
 
 *,
@@ -21,13 +39,29 @@
 }
 
 html {
+  overflow-x: clip;
   scroll-behavior: smooth;
+  @include truck-cursor;
+}
+
+a,
+button,
+[role='button'],
+summary,
+label,
+select {
+  @include truck-cursor(pointer);
+}
+
+input,
+textarea {
+  cursor: text;
 }
 
 body {
   margin: 0;
   color: var(--ink);
-  background: #f7f4f2;
+  background: var(--bg);
   font-family: var(--font-body);
   font-weight: 400;
   line-height: 1.55;
@@ -84,39 +118,38 @@ p {
   min-height: 3.1rem;
   padding: 0.85rem 1.5rem;
   border: 0;
-  border-radius: 0.15rem;
-  background: var(--brand-red);
-  color: var(--brand-white);
+  border-radius: 999px;
+  background: var(--brand);
+  color: #fff;
   font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  cursor: pointer;
+  @include truck-cursor(pointer);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--brand) 24%, transparent);
   transition:
     background 0.25s var(--ease-out),
-    transform 0.25s var(--ease-out),
     box-shadow 0.25s var(--ease-out);
 }
 
 .btn-whatsapp:hover {
-  background: var(--brand-red-deep);
-  transform: translateY(-2px);
+  background: var(--brand-deep);
 }
 
 .btn-whatsapp:focus-visible {
-  outline: 2px solid var(--brand-red);
+  outline: 2px solid var(--brand);
   outline-offset: 3px;
 }
 
 .btn-whatsapp--ghost {
   background: transparent;
-  color: var(--brand-red);
-  box-shadow: inset 0 0 0 2px var(--brand-red);
+  color: var(--brand);
+  box-shadow: inset 0 0 0 1.5px var(--brand);
 }
 
 .btn-whatsapp--ghost:hover {
-  background: var(--brand-red);
-  color: var(--brand-white);
+  background: var(--brand);
+  color: #fff;
 }
 
 .btn-whatsapp svg {
@@ -138,16 +171,17 @@ p {
 .section__eyebrow {
   display: block;
   margin-bottom: 0.75rem;
-  color: var(--brand-red);
-  font-size: 0.8rem;
+  color: var(--brand);
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .section__title {
   font-size: clamp(2.6rem, 7vw, 4.5rem);
   max-width: 14ch;
+  color: var(--ink);
 }
 
 .section__lead {
@@ -157,17 +191,76 @@ p {
   font-size: 1.05rem;
 }
 
+/* Uses the standalone translate/scale properties so it composes with the
+   transform set by appTilt and appParallax. */
 .reveal {
+  --reveal-x: calc(var(--reveal-dir, -1) * 4.5rem);
+  --reveal-y: 0px;
+  --reveal-scale: 1;
   opacity: 0;
-  transform: translateY(1.5rem);
+  translate: var(--reveal-x) var(--reveal-y);
+  scale: var(--reveal-scale);
   transition:
-    opacity 0.7s var(--ease-out) var(--reveal-delay, 0ms),
-    transform 0.7s var(--ease-out) var(--reveal-delay, 0ms);
+    opacity 0.45s ease,
+    translate 0.6s var(--ease-out),
+    scale 0.6s var(--ease-out);
+}
+
+.reveal--zoom {
+  --reveal-x: calc(var(--reveal-dir, -1) * 3rem);
+  --reveal-scale: 0.92;
+}
+
+/* Set on a section to make its reveals slide in from the right. */
+.reveal-from-right {
+  --reveal-dir: 1;
+  overflow-x: clip;
 }
 
 .reveal.reveal--visible {
   opacity: 1;
-  transform: none;
+  translate: 0 0;
+  scale: 1;
+  transition:
+    opacity 0.9s ease var(--reveal-delay, 0ms),
+    translate 1.1s var(--ease-out) var(--reveal-delay, 0ms),
+    scale 1.1s var(--ease-out) var(--reveal-delay, 0ms);
+}
+
+.tilt {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --glare-x: 50%;
+  --glare-y: 50%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transition: transform 0.35s var(--ease-out);
+  will-change: transform;
+}
+
+.tilt.tilt--active {
+  transition: transform 0.08s linear;
+}
+
+.tilt__glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    180px circle at var(--glare-x) var(--glare-y),
+    rgb(255 255 255 / 55%),
+    transparent 58%
+  );
+  mix-blend-mode: soft-light;
+  transition: opacity 0.25s ease;
+  z-index: 4;
+}
+
+.tilt.tilt--active .tilt__glare {
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -185,7 +278,14 @@ p {
 
   .reveal {
     opacity: 1;
-    transform: none;
+    translate: none;
+    scale: none;
+    filter: none;
     transition: none;
+  }
+
+  .tilt {
+    transform: none;
+    will-change: auto;
   }
 }

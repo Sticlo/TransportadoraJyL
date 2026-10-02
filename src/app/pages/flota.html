@@ -1,0 +1,142 @@
+<app-page-hero
+  eyebrow="Nuestra flota"
+  title="Vehículos listos para tu mercancía"
+  lead="46 vehículos propios y contenedores para mover tu carga por todo el país."
+/>
+
+<section class="section capacity">
+  <div class="section__inner capacity__grid">
+    <div class="capacity__copy">
+      <span class="section__eyebrow" appReveal>Capacidad de flota</span>
+      <h2 class="section__title" appReveal [appRevealDelay]="90">Capacidad propia para tu operación</h2>
+      <p class="section__lead" appReveal [appRevealDelay]="180">
+        40 minimulas, 4 tractomulas y 2 turbos, más contenedores propios. Al ser nuestros,
+        controlamos su disponibilidad y respondemos más rápido.
+      </p>
+    </div>
+
+    <div class="capacity__board" appReveal="zoom" [appRevealDelay]="120">
+      <div class="capacity__total">
+        <strong>46</strong>
+        <span>Vehículos propios</span>
+      </div>
+      <dl class="capacity__list">
+        @for (item of capacity; track item.label) {
+          <div>
+            <dt>{{ item.label }}</dt>
+            <dd [class.capacity__word]="item.value.length > 3">{{ item.value }}</dd>
+          </div>
+        }
+      </dl>
+    </div>
+  </div>
+
+  <div class="section__inner">
+    <figure class="lineup" appReveal="zoom">
+      <picture>
+        <source media="(max-width: 700px)" srcset="/images/flota-completa-sm.webp" />
+        <img
+          src="/images/flota-completa.webp"
+          alt="Flota completa de Transportes J&L: minimulas, tractomulas con contenedor, tractomula encarrozada y turbo estacionados juntos frente a las montañas"
+          width="1280"
+          height="720"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+      <figcaption>
+        <strong>Toda la flota, un solo equipo</strong>
+        <span>Minimulas · Tractomulas · Turbos · Contenedores</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section fleet">
+  <div class="section__inner">
+    <span class="section__eyebrow" appReveal>Tipos de vehículos</span>
+    <h2 class="section__title fleet__title" appReveal [appRevealDelay]="90">Un equipo para cada operación</h2>
+
+    <ul class="fleet__list">
+      @for (unit of units; track unit.name; let i = $index) {
+        <li class="fleet__item" [class.fleet__item--alt]="i % 2 === 1">
+          <figure class="fleet__photo" appReveal="zoom">
+            <img
+              [src]="unit.photo.src"
+              [alt]="unit.photo.alt"
+              [width]="unit.photo.width"
+              [height]="unit.photo.height"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div class="fleet__copy" appReveal [appRevealDelay]="120">
+            <span class="fleet__index" aria-hidden="true">0{{ i + 1 }}</span>
+            <h3>
+              @if (unit.count) {
+                <span class="fleet__count">{{ unit.count }}</span>
+              }
+              {{ unit.name }}
+            </h3>
+            <p>{{ unit.detail }}</p>
+          </div>
+        </li>
+      }
+    </ul>
+
+    <aside class="fleet__allied" appReveal [appRevealDelay]="80">
+      <span class="fleet__allied-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 13.5 5.5 11a2.1 2.1 0 0 1 0-3l2-2a2.1 2.1 0 0 1 3 0l1.5 1.5" />
+          <path d="m16 10.5 2.5 2.5a2.1 2.1 0 0 1 0 3l-2 2a2.1 2.1 0 0 1-3 0L12 16.5" />
+          <path d="m9 15 6-6" />
+        </svg>
+      </span>
+      <div>
+        <h3>Flota aliada</h3>
+        <p>
+          Cuando la demanda crece, sumamos vehículos aliados que coordinamos nosotros según lo
+          que necesite cada operación.
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section reach">
+  <div class="section__inner reach__grid">
+    <div>
+      <span class="section__eyebrow" appReveal>Lo que podemos atender</span>
+      <h2 class="section__title" appReveal [appRevealDelay]="90">Lo que podemos mover por ti</h2>
+      <p class="section__lead" appReveal [appRevealDelay]="180">
+        Con flota propia controlamos la operación y hablamos directo contigo.
+      </p>
+      <a
+        class="btn-whatsapp reach__cta"
+        [href]="whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+        appReveal
+        [appRevealDelay]="240"
+      >
+        Consultar disponibilidad
+      </a>
+    </div>
+
+    <ul class="reach__list">
+      @for (service of services; track service; let i = $index) {
+        <li appReveal [appRevealDelay]="80 + i * 50">{{ service }}</li>
+      }
+    </ul>
+  </div>
+
+  <p class="reach__tagline" appReveal>
+    Transportes J&amp;L <span>— Flota propia que respalda tu operación.</span>
+  </p>
+</section>
+
+<app-fleet-gallery
+  eyebrow="Galería"
+  title="Así se ve nuestra flota"
+  lead="Fotos reales de nuestras unidades en operación: puertos, bodegas y carreteras de Colombia."
+/>

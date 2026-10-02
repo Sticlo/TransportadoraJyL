@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
-import { SiteHeader } from '../layout/site-header';
-import { SiteFooter } from '../layout/site-footer';
 import { Hero } from '../sections/hero';
-import { Coverage } from '../sections/coverage';
-import { Services } from '../sections/services';
-import { Trust } from '../sections/trust';
-import { Contact } from '../sections/contact';
+import { HomeOverview } from '../sections/home-overview';
+import { HomeCta } from '../sections/home-cta';
+import { FleetGallery } from '../shared/fleet-gallery';
 
 @Component({
   selector: 'app-home',
-  imports: [SiteHeader, SiteFooter, Hero, Coverage, Services, Trust, Contact],
+  imports: [Hero, HomeOverview, FleetGallery, HomeCta],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

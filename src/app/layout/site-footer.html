@@ -1,15 +1,76 @@
 <footer class="footer">
   <div class="footer__inner">
-    <p class="footer__brand">{{ company }}</p>
-    <p class="footer__note">Transporte de mercancía a todo Colombia.</p>
-    <a
-      class="btn-whatsapp btn-whatsapp--ghost footer__cta"
-      [href]="whatsapp"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      WhatsApp
-    </a>
-    <p class="footer__copy">© {{ year }} {{ company }}</p>
+    <div class="footer__col">
+      <h3>Sitio</h3>
+      <nav aria-label="Sitio">
+        @for (link of siteLinks; track link.path) {
+          <a [routerLink]="link.path">{{ link.label }}</a>
+        }
+      </nav>
+    </div>
+
+    <div class="footer__col">
+      <h3>Contactos</h3>
+      <nav aria-label="Contactos">
+        @for (link of contactLinks; track link.path) {
+          <a [routerLink]="link.path">{{ link.label }}</a>
+        }
+        <a [href]="whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </nav>
+
+      <div class="footer__social" aria-label="Redes sociales">
+        <a href="#" aria-label="X / Twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 3H21l-6.6 7.5L22 21h-5.8l-4.5-5.9L6.4 21H3.6l7-8L2 3h5.9l4.1 5.4L18.2 3Zm-1 16.5h1.6L7 4.4H5.3l11.9 15.1Z"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Zm10 2H7a2 2 0 0 0-2 2v10c0 1.1.9 2 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm-5 3.5A4.5 4.5 0 1 1 7.5 13 4.5 4.5 0 0 1 12 8.5Zm0 2A2.5 2.5 0 1 0 14.5 13 2.5 2.5 0 0 0 12 10.5Zm5.25-3.75a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__map">
+      <iframe
+        src="https://www.google.com/maps?q=Calle%2018%20%23102-50%2C%20Fontib%C3%B3n%2C%20Bogot%C3%A1%2C%20Colombia&z=16&output=embed"
+        title="Ubicación en Fontibón"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+      <a class="footer__maps-link" [href]="mapsLink" target="_blank" rel="noopener noreferrer">
+        Abrir mapa
+      </a>
+    </div>
+
+    <div class="footer__contact-card">
+      <h3>Contact Us</h3>
+      <p class="footer__phone">{{ phone }}</p>
+      <p class="footer__addr">
+        <strong>{{ address }}</strong>
+        <span>{{ city }}</span>
+      </p>
+      <a
+        class="btn-whatsapp footer__wa"
+        [href]="whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <img
+      class="footer__logo"
+      src="/images/logo-jl.webp"
+      [alt]="company + ' — Trabajando por Colombia'"
+      width="640"
+      height="482"
+      loading="lazy"
+    />
+    <p>© {{ year }} {{ company }}</p>
   </div>
 </footer>

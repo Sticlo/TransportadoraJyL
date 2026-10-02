@@ -1,0 +1,27 @@
+<section class="section gallery" aria-labelledby="fleet-gallery-title">
+  <div class="section__inner gallery__head">
+    <span class="section__eyebrow" appReveal>{{ eyebrow() }}</span>
+    <h2 class="section__title" id="fleet-gallery-title" appReveal [appRevealDelay]="90">
+      {{ title() }}
+    </h2>
+    <p class="section__lead" appReveal [appRevealDelay]="180">{{ lead() }}</p>
+  </div>
+
+  <div class="gallery__viewport" appReveal [appRevealDelay]="240">
+    <ul class="gallery__track">
+      @for (photo of loop; track $index; let i = $index) {
+        <li class="gallery__item" [attr.aria-hidden]="i >= photos.length ? true : null">
+          <img
+            [src]="photo.srcSm"
+            [alt]="i >= photos.length ? '' : photo.alt"
+            width="560"
+            height="420"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="gallery__label">{{ photo.label }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

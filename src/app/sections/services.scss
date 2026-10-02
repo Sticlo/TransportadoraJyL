@@ -3,12 +3,12 @@
 }
 
 .services {
-  background: var(--brand-white);
+  background: var(--bg);
 }
 
 .services__list {
   list-style: none;
-  margin: 2.75rem 0 0;
+  margin: 0;
   padding: 0;
   display: grid;
   gap: 0;
@@ -32,14 +32,21 @@
 }
 
 .services__index {
-  font-family: var(--font-display);
-  font-size: 2.4rem;
-  color: var(--brand-red);
-  line-height: 1;
-  min-width: 2rem;
+  display: grid;
+  place-items: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 1rem;
+  background: var(--brand-soft);
+  color: var(--brand);
 }
 
-.services__item h3 {
+.services__icon {
+  width: 2.1rem;
+  height: 2.1rem;
+}
+
+.services__item h2 {
   font-size: clamp(1.6rem, 3vw, 2.1rem);
   margin-bottom: 0.35rem;
 }
@@ -49,38 +56,35 @@
   max-width: 36rem;
 }
 
-.services__route {
-  display: none;
-  width: 7.5rem;
-  color: var(--brand-red);
+.services__item p + p {
+  margin-top: 0.75rem;
 }
 
-.services__route path {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.5;
-  stroke-dasharray: 8 8;
-  animation: dash-move 1s linear infinite;
-}
-
-.services__route circle {
-  fill: currentColor;
+.services__photo {
+  grid-column: 1 / -1;
+  margin: 0;
+  aspect-ratio: 16 / 9;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: 0 14px 30px rgb(20 17 15 / 10%);
 }
 
 @media (min-width: 720px) {
-  .services__route {
-    display: block;
+  .services__photo {
+    grid-column: auto;
+    width: clamp(11rem, 22vw, 15rem);
+    aspect-ratio: 4 / 3;
   }
 }
 
-@keyframes dash-move {
-  to {
-    stroke-dashoffset: -16;
-  }
+.services__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--ease-out);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .services__route path {
-    animation: none;
-  }
+.services__item:hover .services__photo img {
+  transform: scale(1.06);
 }

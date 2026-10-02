@@ -1,0 +1,24 @@
+<header class="page-hero" [class.page-hero--media]="image()">
+  <div class="page-hero__inner">
+    <div class="page-hero__copy">
+      <span class="section__eyebrow">{{ eyebrow() }}</span>
+      <h1 class="page-hero__title">{{ title() }}</h1>
+      <p class="page-hero__lead">{{ lead() }}</p>
+    </div>
+
+    @if (image(); as src) {
+      <figure class="page-hero__media">
+        <img
+          [src]="src"
+          [attr.srcset]="imageSm() ? imageSm() + ' 640w, ' + src + ' 1152w' : null"
+          sizes="(min-width: 900px) 34rem, 100vw"
+          [alt]="imageAlt()"
+          width="1152"
+          height="864"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </figure>
+    }
+  </div>
+</header>

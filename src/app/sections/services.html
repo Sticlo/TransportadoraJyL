@@ -1,26 +1,28 @@
-<section class="section services" id="servicio">
+<section class="section services">
   <div class="section__inner">
-    <div appReveal>
-      <span class="section__eyebrow">Servicio</span>
-      <h2 class="section__title">Tu mercancía, en movimiento</h2>
-      <p class="section__lead">
-        Diseñado para empresas y personas que necesitan enviar carga con confianza,
-        sin procesos enredados.
-      </p>
-    </div>
-
     <ol class="services__list">
       @for (point of points; track point.title; let i = $index) {
-        <li class="services__item" appReveal [appRevealDelay]="i * 120">
-          <span class="services__index" aria-hidden="true">{{ i + 1 }}</span>
+        <li class="services__item" appReveal [appRevealDelay]="(i % 3) * 120">
+          <span class="services__index" aria-hidden="true">
+            <app-service-icon class="services__icon" [icon]="point.icon" />
+          </span>
           <div>
-            <h3>{{ point.title }}</h3>
+            <h2>{{ point.title }}</h2>
             <p>{{ point.text }}</p>
+            @if (point.more) {
+              <p>{{ point.more }}</p>
+            }
           </div>
-          <svg class="services__route" viewBox="0 0 120 24" aria-hidden="true">
-            <path d="M4 12 H100" />
-            <circle cx="108" cy="12" r="5" />
-          </svg>
+          <figure class="services__photo">
+            <img
+              [src]="point.image"
+              [alt]="point.imageAlt"
+              width="560"
+              height="420"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
         </li>
       }
     </ol>

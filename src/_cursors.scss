@@ -1,0 +1,13 @@
+@mixin truck-cursor($kind: default) {
+  $name: 'truck';
+  $fallback: auto;
+
+  @if $kind == pointer {
+    $name: 'truck-pointer';
+    $fallback: pointer;
+  }
+
+  cursor: url('/cursors/#{$name}.png') 2 12, $fallback;
+  cursor: -webkit-image-set(url('/cursors/#{$name}.png') 1x, url('/cursors/#{$name}@2x.png') 2x) 2 12,
+    $fallback;
+}

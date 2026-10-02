@@ -1,0 +1,335 @@
+:host {
+  display: block;
+}
+
+/* ---------- Capacidad ---------- */
+
+.capacity {
+  background:
+    radial-gradient(50rem 26rem at 100% 0%, color-mix(in srgb, var(--brand) 8%, transparent), transparent 70%),
+    var(--bg-elevated);
+}
+
+.capacity__grid {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .capacity__grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.capacity__board {
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 30px 60px rgb(20 17 15 / 8%);
+}
+
+.capacity__total {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding: 1.5rem 1.75rem;
+  background: var(--ink);
+  color: #fff;
+}
+
+.capacity__total strong {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw, 4.5rem);
+  font-weight: 400;
+  line-height: 0.9;
+  color: var(--brand);
+}
+
+.capacity__total span {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  letter-spacing: 0.03em;
+}
+
+.capacity__list {
+  margin: 0;
+  padding: 0.5rem 1.75rem 0.75rem;
+}
+
+.capacity__list div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.capacity__list div:last-child {
+  border-bottom: 0;
+}
+
+.capacity__list dt {
+  font-weight: 600;
+}
+
+.capacity__list dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  line-height: 1;
+  color: var(--brand);
+}
+
+.capacity__list dd.capacity__word {
+  font-size: 1.35rem;
+  letter-spacing: 0.03em;
+}
+
+.lineup {
+  position: relative;
+  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: 0 30px 60px rgb(20 17 15 / 14%);
+}
+
+.lineup img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.lineup figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem 1.5rem;
+  padding: clamp(2.5rem, 6vw, 4rem) clamp(1.25rem, 3vw, 2rem) clamp(1rem, 2.5vw, 1.5rem);
+  background: linear-gradient(to top, rgb(20 17 15 / 85%), transparent);
+  color: #fff;
+}
+
+.lineup figcaption strong {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.lineup figcaption span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+@media (max-width: 560px) {
+  .lineup figcaption {
+    position: static;
+    flex-direction: column;
+    padding: 1rem 1.25rem 1.15rem;
+    background: var(--ink);
+  }
+}
+
+/* ---------- Tipos de vehículos ---------- */
+
+.fleet {
+  background: var(--bg);
+}
+
+.fleet__title {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.fleet__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+
+.fleet__item {
+  display: grid;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+@media (min-width: 820px) {
+  .fleet__item {
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .fleet__item--alt .fleet__photo {
+    order: 2;
+  }
+}
+
+.fleet__photo {
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: 0 24px 48px rgb(20 17 15 / 12%);
+}
+
+.fleet__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s var(--ease-out);
+}
+
+.fleet__item:hover .fleet__photo img {
+  transform: scale(1.04);
+}
+
+.fleet__index {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  color: var(--brand-red);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.fleet__copy h3 {
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  margin-bottom: 0.5rem;
+}
+
+.fleet__count {
+  color: var(--brand);
+}
+
+.fleet__copy p {
+  color: var(--ink-muted);
+  max-width: 32rem;
+  font-size: 1.05rem;
+}
+
+.fleet__allied {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border-radius: 1.25rem;
+  background: var(--brand-soft);
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, transparent);
+}
+
+.fleet__allied-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.9rem;
+  background: var(--brand);
+  color: #fff;
+}
+
+.fleet__allied-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.fleet__allied h3 {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin-bottom: 0.4rem;
+}
+
+.fleet__allied p {
+  color: var(--ink-muted);
+  max-width: 48rem;
+}
+
+/* ---------- Servicios que atiende ---------- */
+
+.reach {
+  background: var(--bg-elevated);
+}
+
+.reach__grid {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .reach__grid {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.reach__cta {
+  margin-top: 1.75rem;
+}
+
+.reach__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+@media (min-width: 560px) {
+  .reach__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.reach__list li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.9rem 1rem 0.9rem 2.9rem;
+  border-radius: 0.9rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.reach__list li::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5 9-10'/%3E%3C/svg%3E")
+      center / 0.75rem no-repeat,
+    var(--brand);
+}
+
+.reach__tagline {
+  max-width: var(--max);
+  margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  letter-spacing: 0.02em;
+  color: var(--brand);
+}
+
+.reach__tagline span {
+  color: var(--ink);
+}

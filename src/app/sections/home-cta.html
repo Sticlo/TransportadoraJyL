@@ -1,0 +1,51 @@
+<section class="home-cta">
+  <div class="home-cta__layout">
+    <div class="home-cta__copy">
+      <span class="section__eyebrow" appReveal>Empecemos</span>
+      <h2 class="home-cta__title" appParallax="24">
+        <span class="home-cta__title-line" appReveal [appRevealDelay]="90"
+          >¿Listo para mover tu mercancía?</span
+        >
+      </h2>
+      <p class="home-cta__lead" appReveal [appRevealDelay]="180">
+        Cotiza por WhatsApp y te respondemos con una ruta clara, tiempos y un trato directo.
+      </p>
+      <div class="home-cta__actions" appReveal [appRevealDelay]="270">
+        <a
+          class="btn-whatsapp"
+          appTilt
+          [appTiltMax]="8"
+          [href]="whatsapp"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Cotizar por WhatsApp
+        </a>
+        <a class="home-cta__link" routerLink="/contacto">Ir a contacto</a>
+      </div>
+    </div>
+
+    <div class="home-cta__map-wrap" appParallax="-36">
+      <div class="home-cta__map-card" appReveal [appRevealDelay]="140">
+        <div class="home-cta__map">
+          <iframe
+            src="https://www.google.com/maps?q=Calle%2018%20%23102-50%2C%20Fontib%C3%B3n%2C%20Bogot%C3%A1%2C%20Colombia&z=17&output=embed"
+            title="Ubicación de Transportes J&L SAS en Fontibón"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="home-cta__place">
+          <p>
+            <strong>{{ address }}</strong>
+            <span>{{ city }}</span>
+          </p>
+          <a [href]="mapsLink" target="_blank" rel="noopener noreferrer">
+            Abrir en Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

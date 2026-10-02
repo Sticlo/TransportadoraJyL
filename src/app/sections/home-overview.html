@@ -1,0 +1,158 @@
+<section class="section overview overview--about reveal-from-right">
+  <div class="section__inner overview__about">
+    <div class="overview__map" appParallax="-60">
+      <div appReveal>
+        @defer (on viewport; prefetch on idle) {
+          <app-colombia-map [cities]="mapCities" />
+        } @placeholder {
+          <div class="overview__map-placeholder" aria-hidden="true"></div>
+        }
+      </div>
+    </div>
+
+    <div class="overview__copy">
+      <span class="section__eyebrow" appReveal>Nosotros</span>
+      <h2 class="section__title" appReveal [appRevealDelay]="90">Hechos para llegar a tiempo</h2>
+      <p class="section__lead" appReveal [appRevealDelay]="180">
+        Nuestra empresa ofrece un servicio integral de transporte de carga enfocado en el
+        cumplimiento de los tiempos establecidos para recogida y entrega.
+      </p>
+      <a
+        class="overview__btn"
+        appReveal
+        [appRevealDelay]="270"
+        appTilt
+        [appTiltMax]="8"
+        routerLink="/nosotros"
+        >Conocer la empresa</a
+      >
+    </div>
+
+    <ol class="overview__panel" appReveal [appRevealDelay]="120" appTilt [appTiltMax]="8">
+      <li appReveal [appRevealDelay]="320">
+        <span class="overview__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4 8h16v11H4z" />
+            <path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+            <path d="M4 12h16" />
+          </svg>
+        </span>
+        <div>
+          <strong>Origen</strong>
+          <span>Recogemos tu carga</span>
+        </div>
+      </li>
+      <li appReveal [appRevealDelay]="440">
+        <span class="overview__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="6" cy="18" r="2" />
+            <circle cx="18" cy="6" r="2" />
+            <path d="M8 17c3-1 5-4 6-8" />
+            <path d="M14 8h4v4" />
+          </svg>
+        </span>
+        <div>
+          <strong>Ruta</strong>
+          <span>La movemos entre ciudades</span>
+        </div>
+      </li>
+      <li appReveal [appRevealDelay]="560">
+        <span class="overview__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="8" />
+            <path d="M12 8v4l3 2" />
+          </svg>
+        </span>
+        <div>
+          <strong>Destino</strong>
+          <span>Entrega a tiempo</span>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section overview overview--fleet">
+  <div class="section__inner">
+    <div class="overview__head">
+      <div>
+        <span class="section__eyebrow" appReveal>Flota</span>
+        <h2 class="section__title" appParallax="24">
+          <span class="overview__title-line" appReveal [appRevealDelay]="90"
+            >Unidades listas para tu carga</span
+          >
+        </h2>
+        <p class="section__lead" appReveal [appRevealDelay]="180">
+          46 vehículos propios, contenedores y una red de aliados.
+        </p>
+      </div>
+      <a class="overview__more" appReveal [appRevealDelay]="240" routerLink="/flota"
+        >Ver flota</a
+      >
+    </div>
+
+    <div class="overview__fleet-grid">
+      @for (unit of fleet; track unit.name; let i = $index) {
+        <article
+          class="overview__fleet-item"
+          [class.overview__fleet-item--flipped]="flipped().has(i)"
+          appReveal="zoom"
+          [appRevealDelay]="i * 130"
+          tabindex="0"
+          role="button"
+          [attr.aria-pressed]="flipped().has(i)"
+          [attr.aria-label]="unit.name + '. ' + unit.text"
+          (click)="onCardClick(i)"
+          (keydown.enter)="toggleFlip(i)"
+          (keydown.space)="$event.preventDefault(); toggleFlip(i)"
+        >
+          <div class="overview__fleet-inner">
+            <div class="overview__fleet-face overview__fleet-face--front">
+              <span class="overview__fleet-index">0{{ i + 1 }}</span>
+              <h3>{{ unit.name }}</h3>
+              <p>{{ unit.text }}</p>
+              <span class="overview__fleet-hint" aria-hidden="true">
+                Ver unidad
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+            </div>
+            <div class="overview__fleet-face overview__fleet-face--back" aria-hidden="true">
+              <img [src]="unit.image" alt="" width="560" height="420" loading="lazy" decoding="async" />
+              <div class="overview__fleet-caption">
+                <span>{{ unit.tag }}</span>
+                <strong>{{ unit.name }}</strong>
+              </div>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section overview overview--coverage reveal-from-right">
+  <div class="section__inner overview__split">
+    <div>
+      <span class="section__eyebrow" appReveal>Cobertura</span>
+      <h2 class="section__title" appParallax="24">
+        <span class="overview__title-line" appReveal [appRevealDelay]="90"
+          >Cobertura nacional</span
+        >
+      </h2>
+      <p class="section__lead" appReveal [appRevealDelay]="180">
+        Llevamos tu carga a las principales regiones del país con flota propia y aliada.
+      </p>
+      <a class="overview__more" appReveal [appRevealDelay]="260" routerLink="/cobertura"
+        >Ver cobertura</a
+      >
+    </div>
+
+    <ul class="overview__cities" appReveal [appRevealDelay]="120" appTilt [appTiltMax]="8">
+      @for (city of cities; track city; let i = $index) {
+        <li appReveal [appRevealDelay]="260 + i * 70">{{ city }}</li>
+      }
+    </ul>
+  </div>
+</section>

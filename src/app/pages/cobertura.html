@@ -1,0 +1,77 @@
+<app-page-hero
+  eyebrow="Cobertura"
+  title="Cobertura nacional"
+  lead="Conectamos tu operación con las principales regiones del país."
+/>
+
+<app-coverage />
+
+<section class="section areas">
+  <div class="section__inner">
+    <span class="section__eyebrow" appReveal>Regiones</span>
+    <h2 class="section__title areas__title" appReveal [appRevealDelay]="90">
+      Atendemos operaciones desde y hacia
+    </h2>
+    <ul class="areas__list">
+      @for (area of areas; track area; let i = $index) {
+        <li appReveal [appRevealDelay]="60 + i * 45">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"
+            />
+          </svg>
+          {{ area }}
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="section operations">
+  <div class="section__inner">
+    <span class="section__eyebrow" appReveal>Principales operaciones</span>
+    <h2 class="section__title operations__title" appReveal [appRevealDelay]="90">
+      Así movemos su carga
+    </h2>
+    <ol class="operations__list">
+      @for (op of operations; track op.from + op.to; let i = $index) {
+        <li class="operations__item" appReveal [appRevealDelay]="120 + i * 100">
+          <p class="operations__route">
+            <span>{{ op.from }}</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 12h15M13 6l6 6-6 6" />
+            </svg>
+            <span>{{ op.to }}</span>
+          </p>
+          <p class="operations__text">{{ op.text }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<section class="section response">
+  <div class="section__inner response__inner">
+    <span class="section__eyebrow" appReveal>Capacidad de respuesta</span>
+    <div class="response__formula" appReveal [appRevealDelay]="90">
+      @for (item of capacity; track item.label; let first = $first) {
+        @if (!first) {
+          <span class="response__plus" aria-hidden="true">+</span>
+        }
+        <div class="response__term">
+          @if (item.value) {
+            <strong>{{ item.value }}</strong>
+          }
+          <span>{{ item.label }}</span>
+        </div>
+      }
+    </div>
+    <p class="response__text" appReveal [appRevealDelay]="180">
+      Con flota propia, aliados y contenedores, ajustamos la capacidad a lo que pida tu operación.
+    </p>
+    <p class="response__tagline" appReveal [appRevealDelay]="240">
+      Transportes J&amp;L <span>· Cobertura nacional, capacidad operativa y atención directa.</span>
+    </p>
+  </div>
+</section>

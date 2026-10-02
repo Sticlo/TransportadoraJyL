@@ -1,14 +1,32 @@
 /** Reemplaza con el número real (código país + número, sin + ni espacios). */
 export const WHATSAPP_NUMBER = '57XXXXXXXXXX';
 
-export const COMPANY_NAME = 'Transportadora J&L';
+export const COMPANY_NAME = 'Transportes J&L SAS';
+
+export const COMPANY_ADDRESS = 'Calle 18 #102-50, segundo piso';
+
+export const COMPANY_CITY = 'Fontibón, Bogotá, Colombia';
+
+export const COMPANY_ADDRESS_FULL = `${COMPANY_ADDRESS}, ${COMPANY_CITY}`;
+
+/** Query específica para que Maps caiga en Fontibón y no en otra Calle 18. */
+export const COMPANY_MAPS_QUERY =
+  'Calle 18 #102-50, Fontibón, Bogotá, Colombia';
 
 export const DEFAULT_WHATSAPP_MESSAGE =
-  'Hola, quiero cotizar un envío con Transportadora J&L';
+  'Hola, quiero cotizar un envío con Transportes J&L SAS';
 
 export function whatsappUrl(message: string = DEFAULT_WHATSAPP_MESSAGE): string {
   const text = encodeURIComponent(message);
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+}
+
+export function mapsEmbedUrl(address: string = COMPANY_MAPS_QUERY): string {
+  return `https://www.google.com/maps?q=${encodeURIComponent(address)}&z=17&output=embed`;
+}
+
+export function mapsLinkUrl(address: string = COMPANY_MAPS_QUERY): string {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 }
 
 export function displayPhone(number: string = WHATSAPP_NUMBER): string {
