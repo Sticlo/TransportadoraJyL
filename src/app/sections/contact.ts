@@ -4,8 +4,10 @@ import { RouterLink } from '@angular/router';
 import {
   COMPANY_ADDRESS,
   COMPANY_CITY,
+  COMPANY_EMAIL,
   COMPANY_NAME,
   displayPhone,
+  emailUrl,
   mapsLinkUrl,
   whatsappUrl,
 } from '../core/contact';
@@ -68,6 +70,8 @@ export class Contact {
   readonly mapsLink = mapsLinkUrl();
   readonly whatsapp = whatsappUrl();
   readonly phoneLabel = displayPhone();
+  readonly email = COMPANY_EMAIL;
+  readonly emailLink = emailUrl();
 
   readonly cities = COVERAGE_CITY_NAMES;
   readonly services = COMPANY_SERVICES.map((service) => service.title);

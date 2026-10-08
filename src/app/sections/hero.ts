@@ -90,6 +90,13 @@ export class Hero {
     this.paused.update((p) => !p);
   }
 
+  onCardClick(index: number): void {
+    if (typeof matchMedia === 'function' && matchMedia('(hover: hover)').matches) {
+      return;
+    }
+    this.toggleFlip(index);
+  }
+
   toggleFlip(index: number): void {
     this.flipped.update((state) => ({ ...state, [index]: !state[index] }));
   }

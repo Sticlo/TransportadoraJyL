@@ -344,20 +344,11 @@
   .hero-features__grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .feat--title {
-    grid-column: 1 / -1;
-  }
 }
 
 @media (min-width: 1000px) {
   .hero-features__grid {
-    grid-template-columns: 0.8fr repeat(3, 1fr);
-  }
-
-  .feat--title {
-    grid-column: auto;
-    grid-row: span 2;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -412,6 +403,17 @@
 
 .feat--flipped .feat__inner {
   transform: rotateY(180deg);
+}
+
+@media (hover: hover) {
+  .feat--cube:hover .feat__inner {
+    transform: rotateY(180deg);
+  }
+
+  .feat--cube:hover .feat__face--back img {
+    transform: none;
+    opacity: 1;
+  }
 }
 
 .feat__face {

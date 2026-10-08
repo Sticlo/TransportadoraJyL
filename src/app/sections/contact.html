@@ -122,6 +122,27 @@
             <span class="contact__card-arrow" aria-hidden="true">→</span>
           </a>
         </li>
+        <li appReveal [appRevealDelay]="240">
+          <a class="contact__card" [href]="emailLink">
+            <span class="contact__card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 6h16v12H4z M4 7l8 6 8-6"
+                />
+              </svg>
+            </span>
+            <span class="contact__card-text">
+              <strong>Correo</strong>
+              <span>{{ email }}</span>
+            </span>
+            <span class="contact__card-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
         <li appReveal [appRevealDelay]="280">
           <a class="contact__card" [href]="mapsLink" target="_blank" rel="noopener noreferrer">
             <span class="contact__card-icon">

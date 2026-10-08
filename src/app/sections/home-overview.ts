@@ -21,19 +21,19 @@ export class HomeOverview {
   readonly fleet = [
     {
       name: 'Minimulas',
-      text: 'Transporte de carga y distribución nacional.',
+      text: 'Contamos con Parque automotor Moderno y ágil para carga seca y paletizada. Ideales para distribución entre ciudades.',
       tag: 'Distribución nacional',
       image: '/images/flota/intl-azul-sm.webp',
     },
     {
       name: 'Tractomulas',
-      text: 'Larga distancia, carga completa y mayor capacidad.',
+      text: 'Para cargas completas y contenedores de 20 y 40 pies en rutas de larga distancia, hacia y desde los puertos.',
       tag: 'Carga completa',
       image: '/images/flota/kw-tubos-sm.webp',
     },
     {
       name: 'Turbos',
-      text: 'Menor volumen, distribución y entregas flexibles.',
+      text: 'Para cargas de menor volumen y entregas urbanas o regionales que necesitan rapidez y flexibilidad.',
       tag: 'Entregas flexibles',
       image: '/images/flota/turbo-forland-sm.webp',
     },

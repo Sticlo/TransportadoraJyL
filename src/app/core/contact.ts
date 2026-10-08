@@ -1,5 +1,7 @@
-/** Reemplaza con el número real (código país + número, sin + ni espacios). */
-export const WHATSAPP_NUMBER = '57XXXXXXXXXX';
+/** Código país + número, sin + ni espacios. */
+export const WHATSAPP_NUMBER = '573208927644';
+
+export const COMPANY_EMAIL = 'subgerencia@transportesjyl.com';
 
 export const COMPANY_NAME = 'Transportes J&L SAS';
 
@@ -19,6 +21,10 @@ export const DEFAULT_WHATSAPP_MESSAGE =
 export function whatsappUrl(message: string = DEFAULT_WHATSAPP_MESSAGE): string {
   const text = encodeURIComponent(message);
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+}
+
+export function emailUrl(subject: string = 'Cotización de transporte'): string {
+  return `mailto:${COMPANY_EMAIL}?subject=${encodeURIComponent(subject)}`;
 }
 
 export function mapsEmbedUrl(address: string = COMPANY_MAPS_QUERY): string {

@@ -1,4 +1,4 @@
-export type ServiceIcon = 'export' | 'import' | 'truck' | 'route' | 'fleet' | 'itr';
+export type ServiceIcon = 'export' | 'import' | 'truck' | 'route' | 'fleet' | 'itr' | 'policy';
 
 export interface CompanyService {
   title: string;
@@ -14,8 +14,18 @@ export interface CompanyService {
 
 export const COMPANY_SERVICES: readonly CompanyService[] = [
   {
+    title: 'Póliza de cobertura',
+    short: 'Respaldo asegurador en cada operación de transporte.',
+    text: 'Contamos con poliza de respaldo para brindar mayor seguridad a nuestros clientes en cada operación de transporte.',
+    icon: 'policy',
+    flipLabel: 'Carga asegurada',
+    image: '/images/flota/intl-azul-naranja-sm.webp',
+    cutout: '/images/flota/cut/intl-azul-naranja.webp',
+    imageAlt: 'Tractomula International azul y naranja con contenedor frente a una bodega',
+  },
+  {
     title: 'Exportación',
-    short: 'Desde tu planta, bodega o centro de distribución hasta su despacho internacional.',
+    short: 'Entregas eficientes en puerto e inspectores certificados que revisan cada unidad.',
     text: 'Le garantizamos entregas eficientes en puerto para sus exportaciones. Además, contamos con inspectores certificados que revisan las unidades antes de su embarque hacia el destino final.',
     icon: 'export',
     flipLabel: 'Al puerto a tiempo',
@@ -56,7 +66,7 @@ export const COMPANY_SERVICES: readonly CompanyService[] = [
   {
     title: 'Flotas',
     short: 'Minimulas, tractomulas, turbos y contenedores para cada tipo de carga.',
-    text: 'Minimulas, tractomulas, turbos y contenedores para cada tipo de carga. Conoce el detalle en la sección Flota.',
+    text: 'Contamos con una flota propia de Minimulas, tractomulas, turbos y contenedores para cada tipo de carga. Conoce el detalle en la sección Flota.',
     icon: 'fleet',
     flipLabel: 'Flota propia',
     image: '/images/flota/intl-blanco-rojo-sm.webp',
@@ -65,7 +75,7 @@ export const COMPANY_SERVICES: readonly CompanyService[] = [
   },
   {
     title: 'Servicios de ITR',
-    short: 'Desembalaje en Buenaventura y Cartagena y devolución inmediata del contenedor.',
+    short: 'Desembalaje en los patios de Buenaventura y Cartagena con aliados de confianza.',
     text: 'Con aliados en los patios de Buenaventura y Cartagena hacemos el desembalaje de tu mercancía en puerto y la llevamos en nuestros vehículos hasta el cliente final, en buen estado. Devolvemos el contenedor de inmediato para reducir costos.',
     icon: 'itr',
     flipLabel: 'Desembalaje en puerto',

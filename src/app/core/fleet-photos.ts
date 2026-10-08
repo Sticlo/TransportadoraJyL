@@ -24,13 +24,14 @@ export const FLEET_PHOTOS = {
   moradaBodega: photo('intl-morada-bodega', 1024, 575, 'Tractomula en el muelle de cargue de una bodega', 'Cargue en bodega'),
   yangMing: photo('kw-yangming', 768, 1024, 'Tractomula Kenworth turquesa con contenedor Yang Ming', 'Exportación'),
   morada: photo('intl-morada', 1024, 768, 'Tractomula International morada con contenedor', 'Contenedor'),
+  azulNaranja: photo('intl-azul-naranja', 522, 547, 'Tractomula International azul y naranja con contenedor frente a una bodega', 'Contenedor'),
   carpado: photo('kw-carpado', 944, 708, 'Tractomula Kenworth encarrozada en carretera', 'Encarrozada'),
   turbo: photo('turbo-forland', 1280, 720, 'Camión turbo Forland L5 con furgón de aluminio', 'Turbo'),
 } as const;
 
 export const FLEET_GALLERY: readonly FleetPhoto[] = [
   FLEET_PHOTOS.yangMing,
-  FLEET_PHOTOS.morada,
+  FLEET_PHOTOS.azulNaranja,
   FLEET_PHOTOS.tubos,
   FLEET_PHOTOS.azul,
   FLEET_PHOTOS.carpado,

@@ -46,7 +46,8 @@
 
     <div class="footer__contact-card">
       <h3>Contact Us</h3>
-      <p class="footer__phone">{{ phone }}</p>
+      <a class="footer__phone" [href]="whatsapp" target="_blank" rel="noopener noreferrer">{{ phone }}</a>
+      <a class="footer__email" [href]="emailLink">{{ email }}</a>
       <p class="footer__addr">
         <strong>{{ address }}</strong>
         <span>{{ city }}</span>

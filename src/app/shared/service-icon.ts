@@ -59,6 +59,10 @@ import { ServiceIcon } from '../core/services';
           <circle cx="23" cy="43" r="2.6" />
           <circle cx="38" cy="43" r="2.6" />
         }
+        @case ('policy') {
+          <path d="M24 4 8 10v12c0 10 7 18 16 22 9-4 16-12 16-22V10z" />
+          <path d="m17 24 5 5 9-10" />
+        }
         @case ('itr') {
           <rect x="4" y="10" width="22" height="16" rx="1.5" />
           <path d="M10 10v16M15 10v16M20 10v16" />

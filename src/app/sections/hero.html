@@ -106,7 +106,7 @@
         role="button"
         [attr.aria-pressed]="flipped()[i] ? true : false"
         [attr.aria-label]="'Servicio: ' + item.title + '. ' + item.short + ' Pulsa para ver la foto.'"
-        (click)="toggleFlip(i)"
+        (click)="onCardClick(i)"
         (keydown.enter)="toggleFlip(i)"
         (keydown.space)="$event.preventDefault(); toggleFlip(i)"
       >
