@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { PageHero } from '../shared/page-hero';
 import { Coverage } from '../sections/coverage';
 import { RevealDirective } from '../shared/reveal.directive';
 
 @Component({
   selector: 'app-cobertura',
-  imports: [PageHero, Coverage, RevealDirective],
+  imports: [RouterLink, PageHero, Coverage, RevealDirective],
   templateUrl: './cobertura.html',
   styleUrl: './cobertura.scss',
 })
@@ -45,11 +46,5 @@ export class CoberturaPage {
       to: 'Nacional',
       text: 'Rutas programadas y recurrentes a ciudades y regiones.',
     },
-  ];
-
-  readonly capacity = [
-    { value: '46', label: 'Vehículos propios' },
-    { value: '', label: 'Flota de vehículos aliados' },
-    { value: '', label: 'Contenedores propios' },
   ];
 }

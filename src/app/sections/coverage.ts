@@ -18,8 +18,8 @@ export class Coverage {
   ];
 
   readonly stats = [
-    { value: '46', label: 'Vehículos propios' },
     { value: '12', label: 'Ciudades conectadas' },
+    { value: '11', label: 'Regiones y zonas' },
     { value: '4', label: 'Puertos marítimos' },
   ];
 

@@ -54,22 +54,11 @@
 <section class="section response">
   <div class="section__inner response__inner">
     <span class="section__eyebrow" appReveal>Capacidad de respuesta</span>
-    <div class="response__formula" appReveal [appRevealDelay]="90">
-      @for (item of capacity; track item.label; let first = $first) {
-        @if (!first) {
-          <span class="response__plus" aria-hidden="true">+</span>
-        }
-        <div class="response__term">
-          @if (item.value) {
-            <strong>{{ item.value }}</strong>
-          }
-          <span>{{ item.label }}</span>
-        </div>
-      }
-    </div>
+    <h2 class="response__title" appReveal [appRevealDelay]="90">Al ritmo de tu operación</h2>
     <p class="response__text" appReveal [appRevealDelay]="180">
-      Con flota propia, aliados y contenedores, ajustamos la capacidad a lo que pida tu operación.
+      Ajustamos la capacidad a lo que necesite cada envío, en cualquier región del país.
     </p>
+    <a class="response__link" routerLink="/flota" appReveal [appRevealDelay]="220">Conoce nuestra flota</a>
     <p class="response__tagline" appReveal [appRevealDelay]="240">
       Transportes J&amp;L <span>· Cobertura nacional, capacidad operativa y atención directa.</span>
     </p>

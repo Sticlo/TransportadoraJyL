@@ -106,6 +106,10 @@ export class Contact {
       a: 'Depende del peso, el volumen y el tipo de mercancía. Si no estás seguro, cuéntanos qué vas a mover y te recomendamos entre minimula, tractomula o turbo.',
     },
     {
+      q: '¿Cómo cuidan mi carga en ruta?',
+      a: 'Contamos con seguimiento por plataforma satelital y, cuando se requiere, acompañamiento con escolta o motorizado.',
+    },
+    {
       q: '¿Qué es el servicio de ITR?',
       a: 'Es el transporte terrestre de contenedores de importación y exportación, entre puertos, patios, zonas francas, plantas y bodegas.',
     },

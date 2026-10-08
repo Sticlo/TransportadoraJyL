@@ -20,22 +20,22 @@ export class HomeOverview {
 
   readonly fleet = [
     {
-      name: '40 Minimulas',
+      name: 'Minimulas',
       text: 'Transporte de carga y distribución nacional.',
       tag: 'Distribución nacional',
       image: '/images/flota/intl-azul-sm.webp',
     },
     {
-      name: '4 Tractomulas',
+      name: 'Tractomulas',
       text: 'Larga distancia, carga completa y mayor capacidad.',
       tag: 'Carga completa',
       image: '/images/flota/kw-tubos-sm.webp',
     },
     {
-      name: '2 Turbos',
+      name: 'Turbos',
       text: 'Menor volumen, distribución y entregas flexibles.',
       tag: 'Entregas flexibles',
-      image: '/images/flota/turbo-nkr-sm.webp',
+      image: '/images/flota/turbo-forland-sm.webp',
     },
   ];
 

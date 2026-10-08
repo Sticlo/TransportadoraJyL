@@ -34,9 +34,9 @@
   <div class="section__inner">
     <figure class="lineup" appReveal="zoom">
       <picture>
-        <source media="(max-width: 700px)" srcset="/images/flota-completa-sm.webp" />
+        <source media="(max-width: 700px)" srcset="/images/flota-equipo-sm.webp" />
         <img
-          src="/images/flota-completa.webp"
+          src="/images/flota-equipo.webp"
           alt="Flota completa de Transportes J&L: minimulas, tractomulas con contenedor, tractomula encarrozada y turbo estacionados juntos frente a las montañas"
           width="1280"
           height="720"
@@ -84,22 +84,40 @@
       }
     </ul>
 
-    <aside class="fleet__allied" appReveal [appRevealDelay]="80">
-      <span class="fleet__allied-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M8 13.5 5.5 11a2.1 2.1 0 0 1 0-3l2-2a2.1 2.1 0 0 1 3 0l1.5 1.5" />
-          <path d="m16 10.5 2.5 2.5a2.1 2.1 0 0 1 0 3l-2 2a2.1 2.1 0 0 1-3 0L12 16.5" />
-          <path d="m9 15 6-6" />
-        </svg>
-      </span>
-      <div>
-        <h3>Flota aliada</h3>
-        <p>
-          Cuando la demanda crece, sumamos vehículos aliados que coordinamos nosotros según lo
-          que necesite cada operación.
-        </p>
-      </div>
-    </aside>
+    <div class="fleet__extras">
+      <aside class="fleet__allied" appReveal [appRevealDelay]="80">
+        <span class="fleet__allied-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 13.5 5.5 11a2.1 2.1 0 0 1 0-3l2-2a2.1 2.1 0 0 1 3 0l1.5 1.5" />
+            <path d="m16 10.5 2.5 2.5a2.1 2.1 0 0 1 0 3l-2 2a2.1 2.1 0 0 1-3 0L12 16.5" />
+            <path d="m9 15 6-6" />
+          </svg>
+        </span>
+        <div>
+          <h3>Flota aliada</h3>
+          <p>
+            Cuando la demanda crece, sumamos vehículos aliados que coordinamos nosotros según lo
+            que necesite cada operación.
+          </p>
+        </div>
+      </aside>
+
+      <aside class="fleet__allied fleet__allied--dark" appReveal [appRevealDelay]="160">
+        <span class="fleet__allied-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6l-7-3Z" />
+            <path d="m9 12 2 2 4-4" />
+          </svg>
+        </span>
+        <div>
+          <h3>Seguimiento y escolta</h3>
+          <p>
+            Contamos con seguimiento por plataforma satelital y, cuando se requiere,
+            acompañamiento con escolta o motorizado.
+          </p>
+        </div>
+      </aside>
+    </div>
   </div>
 </section>
 

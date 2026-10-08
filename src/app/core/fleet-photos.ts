@@ -25,7 +25,7 @@ export const FLEET_PHOTOS = {
   yangMing: photo('kw-yangming', 768, 1024, 'Tractomula Kenworth turquesa con contenedor Yang Ming', 'Exportación'),
   morada: photo('intl-morada', 1024, 768, 'Tractomula International morada con contenedor', 'Contenedor'),
   carpado: photo('kw-carpado', 944, 708, 'Tractomula Kenworth encarrozada en carretera', 'Encarrozada'),
-  turbo: photo('turbo-nkr', 944, 578, 'Camión turbo Chevrolet NKR con furgón', 'Turbo'),
+  turbo: photo('turbo-forland', 1280, 720, 'Camión turbo Forland L5 con furgón de aluminio', 'Turbo'),
 } as const;
 
 export const FLEET_GALLERY: readonly FleetPhoto[] = [
